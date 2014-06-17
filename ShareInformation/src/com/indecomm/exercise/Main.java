@@ -21,6 +21,11 @@ public class Main {
 
 	}
 	
+	
+	/*
+	 * print the name of company and Year and Month in which company have maximum share price
+	 * @param  bs   instance of class according to scenario(currently instance of HighestSharePriceByCompany class)
+	 */
 	public static void printList(BaseStructure bs)
 	{
 		HashMap<String,DateWiseEntry> result= bs.getList();

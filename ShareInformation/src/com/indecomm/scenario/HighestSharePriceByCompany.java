@@ -2,15 +2,23 @@ package com.indecomm.scenario;
 
 
 import java.util.HashMap;
+
 import java.util.Map.Entry;
 import java.util.Set;
 
 import com.indecomm.exercise.BaseStructure;
 import com.indecomm.exercise.DateWiseEntry;
 
+/*
+ * to find HighestSharePrice row for each company
+ */
+
+
 public class HighestSharePriceByCompany extends BaseStructure {
 
-	//return map for each Company year and month in which the share price was highest.
+	/*find the maximum share price of the company
+	 * 
+	 * @return map <key-- is name of the company, value--entry which have maximum share price >.*/
 	@Override
 	public HashMap<String,DateWiseEntry> getList() {
 		// TODO Auto-generated method stub

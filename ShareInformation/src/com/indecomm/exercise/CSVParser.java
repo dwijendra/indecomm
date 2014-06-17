@@ -17,7 +17,10 @@ public class CSVParser {
         private ArrayList<DateWiseEntry>  totalEntry=null;
         private static CSVParser instance=null;
         private String[] header;
-      
+      /*
+       * test for header validity condition
+       * @return true if header is valid
+       */
        private boolean isHeaderValid(String line)
        {
     	   Boolean flag=true;
@@ -104,9 +107,7 @@ public class CSVParser {
    				}
    			}
    		}
-   		
-   	
-    	   
+   		   
        }
        public static CSVParser getInstance()
        {
@@ -117,13 +118,20 @@ public class CSVParser {
     	   
     	   return instance;
        }
+       
+       /*
+        * @return the totalEntry
+        */
        public ArrayList<DateWiseEntry> getEntries()
        {
     	  
     	   return totalEntry;
        }
        
-       // it maps the name of company by index 
+       /*
+        *  it maps the name of company by index 
+        *  @param index index(column number) of company in  CSV file
+        */
        public  String getCompanyNameByIndex(int index)
        {
     	   // first is Year and second is Month thats why name is [index+2]

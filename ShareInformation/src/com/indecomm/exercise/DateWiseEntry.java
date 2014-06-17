@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class DateWiseEntry {
 	
-	// this class is mainly for map entry(row) in the CSV file
-	private int year;
-	private String month;
-    private ArrayList<Integer> sharePrices;
+	/* this class is mainly for map entry(row) in the CSV file
+	 * 
+	 */
+	private int year;  // value of Year field in CSV
+	private String month;  // value of Month field in CSV
+    private ArrayList<Integer> sharePrices;   // contains StockPrice of companies
 	public DateWiseEntry(String [] data)
 	{
 		sharePrices=new ArrayList<Integer>();
@@ -64,6 +66,8 @@ public class DateWiseEntry {
 	{
 		return sharePrices;
 	}
+	
+	
 	public boolean equals(Object o)
 	{ 
 		DateWiseEntry obj=(DateWiseEntry)o;

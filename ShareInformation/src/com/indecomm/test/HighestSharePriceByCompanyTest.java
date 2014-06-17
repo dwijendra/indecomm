@@ -38,11 +38,13 @@ public class HighestSharePriceByCompanyTest {
 	 
 	
 	 */
-	
+	/* get map of  HighestSharePriceByCompany  key(company name) value(DateWiseEntry object) */
 	public  HashMap<String, DateWiseEntry> execute()
 	{
 		 return new HighestSharePriceByCompany().getList();
 	}
+	
+	/*  test if file does not contain any data */
 	@Test
 	public void testBlankFile()
 	{
@@ -50,6 +52,9 @@ public class HighestSharePriceByCompanyTest {
 		CSVParser.refresh();
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 	}
+	
+	/*  test if file does not have any company column
+	 * file have only Year and Mont field */
 	@Test
 	public void testNoCompanyColumn()
 	{
@@ -57,6 +62,11 @@ public class HighestSharePriceByCompanyTest {
 		CSVParser.refresh();
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 	}
+	
+	
+	/*
+	 * test for date before 1990 
+	 */
 	@Test
 	public void testBeforeSpecifiedYear()
 	{
@@ -65,12 +75,20 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	
+	/*
+	 * test for year should integer value
+	 */
 	@Test
 	public void testNonIntegerYear()
 	{
 		Constants.FilePath="src\\nonIntegerYr.csv";
 		
 	}
+	
+	/*
+	 * test if company have multiple max value for share  
+	 */
 	@Test
 	public void testMultipleMaxValue()
 	{
@@ -89,6 +107,10 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),map);
 
 	}
+	/*
+	 * test for missing stock price cell
+	 */
+	
 	@Test
 	public void testBlankStockPrice()
 	{
@@ -97,6 +119,10 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	
+	/*
+	 * test for order and index of Year and Field in the header
+	 */
 	@Test
 	public void testyearOrMonthInIncorrectHeader()
 	{
@@ -105,6 +131,9 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	/*
+	 * test if stock price have any negative value field
+	 */
 	@Test
 	public void testnegativeStockPrice()
 	{
@@ -113,6 +142,9 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	/*
+	 * test if stockprice is any string(character value)
+	 */
 	
 	@Test
 	public void testnonIntegerStockPrice()
@@ -122,6 +154,10 @@ public class HighestSharePriceByCompanyTest {
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	
+	/*
+	 * test for mismatch in no of field in header and noof field in rest row
+	 */
 	@Test
 	public void testmisMatchNoOfElementInRow()
 	{
@@ -131,12 +167,14 @@ public class HighestSharePriceByCompanyTest {
 
 	}
 	
+	/*
+	 * test if any blank row in the CSV
+	 */
 	@Test
 	public void testblankLineInFiles()
 	{
 		Constants.FilePath="src\\blankLineInFiles.csv";
-HashMap<String, DateWiseEntry> map=new HashMap<String, DateWiseEntry>();
-		
+        HashMap<String, DateWiseEntry> map=new HashMap<String, DateWiseEntry>();
 		map.put("Company-D",new DateWiseEntry("2002,Apr,663,726,731,999,51".split(",")));
 		map.put("Company-E", new DateWiseEntry("2008,Oct,552,639,521,798,997".split(",")));
 		map.put("Company-A", new DateWiseEntry("2000,Mar,1000,900,738,930,440".split(",")));
@@ -147,6 +185,12 @@ HashMap<String, DateWiseEntry> map=new HashMap<String, DateWiseEntry>();
 		assertEquals(execute(),map);
 
 	}
+	
+	
+	/*
+	 * test if any companny name cell blank in header
+	 */
+	
 	@Test
 	public void testblankCompanyName()
 	{
@@ -155,6 +199,10 @@ HashMap<String, DateWiseEntry> map=new HashMap<String, DateWiseEntry>();
 		assertEquals(execute(),new HashMap<String, DateWiseEntry>());
 
 	}
+	/*
+	 * test header field name should be unique
+	 */
+	
 	@Test
 	public void testheaderFieldShouldBeUnique()
 	{
